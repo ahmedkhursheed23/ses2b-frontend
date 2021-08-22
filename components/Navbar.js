@@ -8,6 +8,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Link from 'next/link';
 import styles from '../styles/Home.module.css'
+import TestStyles from './TestStyles.module.css'
 
 
 
@@ -32,7 +33,7 @@ export default function ButtonAppBar() {
           {/* <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
             <MenuIcon />
           </IconButton> */}
-          <Typography variant="h6" className={styles.navLink} style={{ flexGrow: 1}}>
+          <Typography variant="h6" className={TestStyles.navLink} style={{ flexGrow: 1}}>
             <Link href="/" >
                 Home(Maybe replace this with name or logo)
             </Link>

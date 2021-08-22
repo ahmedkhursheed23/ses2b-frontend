@@ -1,0 +1,17 @@
+.navLink a{
+    text-decoration: none;
+    color:#575757;
+  
+}
+  
+.navLink a:hover{
+    color:#d825cf;
+  
+}
+
+
+
+.button:hover{
+    color:white;
+}
+
