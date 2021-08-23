@@ -1,16 +1,16 @@
 import { Typography } from '@material-ui/core'
 import React from 'react'
-import Sidebar from '../../components/Sidebar'
+import SidebarV2 from '../../components/dashComponents/SidebarV2'
 
 
 export default function exams() {
     return (
         <div>
-            <Sidebar>
+            <SidebarV2>
                 <Typography variant="h5">
-                    This will display any messages from the examinator(idk if thats what you call it)
+                    This will display any messages from the Examinator
                 </Typography>
-            </Sidebar>
+            </SidebarV2>
         </div>
     )
 }
