@@ -39,7 +39,7 @@ export default function test() {
                     <ExamsTable/>
 
                     <Typography style={{paddingTop: 20, paddingBottom: 20}}>
-                        You're probs wondering why there's two different versions of this, it's because I can implement this as a table or as a grid. Let me know which design looks best and ill go forward with it. (The bottom UI is wack but can defs fix it and make it better)
+                        You're probs wondering why there's two different versions of this, it's because I can implement this as a table or as a grid. Let me know which design looks best and ill go forward with it.
                     </Typography>
                     <Typography variant="h5">
                         Upcoming Exams

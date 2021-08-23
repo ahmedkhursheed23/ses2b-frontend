@@ -14,7 +14,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import Button from '@material-ui/core/Button';
-import { MainListItems , SecondaryListItems } from './SidebarListItems';
+import { MainListItems, SecondaryListItems } from './SidebarListItems';
 import List from '@material-ui/core/List';
 
 
@@ -91,7 +91,7 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom: theme.spacing(4),
   },
   button: {
-      color: '#fff',
+    color: '#fff',
   }
 }));
 
@@ -133,7 +133,7 @@ export default function Dashboard(props) {
           </IconButton>
           <Link href="/">
             <Button className={classes.button}>
-                Logout
+              Logout
             </Button>
           </Link>
         </Toolbar>
@@ -151,11 +151,12 @@ export default function Dashboard(props) {
           </IconButton>
         </div>
         <Divider />
-          <List>
-            {MainListItems}
-            <Divider/>
-            {SecondaryListItems}
-          </List>
+        {/* I'm pulling the actual icons with there respective links from the SidebarListItems file */}
+        <List>
+          {MainListItems}
+          <Divider />
+          {SecondaryListItems}
+        </List>
       </Drawer>
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />

@@ -19,7 +19,7 @@ export default function AlertDialog(props) {
 
   return (
     <div>
-      <Button color="secondary" onClick={handleClickOpen} disabled={props.rowDisable}>
+      <Button color="secondary" onClick={handleClickOpen} disabled={props.isDisabled}>
         Start Exam
       </Button>
       <Dialog

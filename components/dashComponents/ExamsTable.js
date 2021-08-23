@@ -46,30 +46,30 @@ function Row(props) {
           </IconButton>
         </TableCell>
         <TableCell component="th" scope="row">
-            <Typography >
-                {row.exam}
-            </Typography>
-            <Typography variant='body2'>
-                {row.subject}
-            </Typography>
-       
+          <Typography >
+            {row.exam}
+          </Typography>
+          <Typography variant='body2'>
+            {row.subject}
+          </Typography>
+
         </TableCell>
         <TableCell align="right">{row.date}</TableCell>
         <TableCell align="right">{row.time}</TableCell>
         <TableCell align="right">
-          <ExamAlert rowDisable={row.available}/>
+          <ExamAlert isDisabled={row.available} />
         </TableCell>
 
       </TableRow>
       <TableRow>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
           <Collapse in={open} timeout="auto" unmountOnExit>
-              <Typography variant="h6" gutterBottom component="div">
-                Details
-              </Typography>
-              <Typography>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 
-              </Typography>
+            <Typography variant="h6" gutterBottom component="div">
+              Details
+            </Typography>
+            <Typography>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </Typography>
           </Collapse>
         </TableCell>
       </TableRow>
