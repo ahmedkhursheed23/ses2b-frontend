@@ -27,8 +27,10 @@ import BarChartIcon from '@material-ui/icons/BarChart';
 import LayersIcon from '@material-ui/icons/Layers';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import Button from '@material-ui/core/Button';
-import style from './TestStyles.module.css'
+
 import Box from '@material-ui/core/Box';
+import { MainListItems , SecondaryListItems } from './SidebarListItems';
+import List from '@material-ui/core/List';
 
 
 
@@ -103,15 +105,15 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: theme.spacing(4),
     paddingBottom: theme.spacing(4),
   },
-  paper: {
-    padding: theme.spacing(2),
-    display: 'flex',
-    overflow: 'auto',
-    flexDirection: 'column',
-  },
-  fixedHeight: {
-    height: 100,
-  },
+  // paper: {
+  //   padding: theme.spacing(2),
+  //   display: 'flex',
+  //   overflow: 'auto',
+  //   flexDirection: 'column',
+  // },
+  // fixedHeight: {
+  //   height: 100,
+  // },
   button: {
       color: '#fff',
   }
@@ -130,7 +132,6 @@ export default function Dashboard(props) {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
   return (
     <div className={classes.root}>
@@ -174,62 +175,15 @@ export default function Dashboard(props) {
           </IconButton>
         </div>
         <Divider />
-              <div>
-                <ListItem button>
-                <ListItemIcon>
-                    <DashboardIcon />
-                </ListItemIcon>
-                <ListItemText primary="Dashboard" />
-                </ListItem>
-                <ListItem button>
-                <ListItemIcon>
-                    <ShoppingCartIcon />
-                </ListItemIcon>
-                <ListItemText primary="Orders" />
-                </ListItem>
-                <ListItem button>
-                <ListItemIcon>
-                    <PeopleIcon />
-                </ListItemIcon>
-                <ListItemText primary="Customers" />
-                </ListItem>
-                <ListItem button>
-                <ListItemIcon>
-                    <BarChartIcon />
-                </ListItemIcon>
-                <ListItemText primary="Reports" />
-                </ListItem>
-                <ListItem button>
-                <ListItemIcon>
-                    <LayersIcon />
-                </ListItemIcon>
-                <ListItemText primary="Integrations" />
-                </ListItem>
-            </div>
+          <List>
+            {MainListItems}
+            <Divider/>
+            {SecondaryListItems}
+          </List>
       </Drawer>
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
-        {/* <Container maxWidth="lg" className={classes.container}>
-          <Grid container spacing={3}>
-            <Grid item xs={12}>
-              <Paper className={fixedHeightPaper}>
-              </Paper>
-            </Grid>
-            <Grid item xs={12}>
-              <Paper className={fixedHeightPaper}>
-              </Paper>
-            </Grid>
-            <Grid item xs={12}>
-              <Paper className={fixedHeightPaper}>
-              </Paper>
-            </Grid>
-            <Grid item xs={12}>
-              <Paper className={fixedHeightPaper}>
-              </Paper>
-            </Grid>
-            
-          </Grid>
-        </Container> */}
+        {/* the props.children component allows content to be passed into the main section */}
         {props.children}
       </main>
     </div>
