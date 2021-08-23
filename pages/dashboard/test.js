@@ -6,7 +6,7 @@ import { makeStyles, Typography } from '@material-ui/core';
 import Paper from '@material-ui/core/Paper';
 import ExamsTable from '../../components/dashComponents/ExamsTable';
 
-
+//This is a test file that I used to try out some new functionality. You can ignore for now.
 
 const useStyles = makeStyles((theme) => ({
     paper: {

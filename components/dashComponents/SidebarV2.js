@@ -9,26 +9,11 @@ import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import Badge from '@material-ui/core/Badge';
-import Container from '@material-ui/core/Container';
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
 import Link from '@material-ui/core/Link';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import ListSubheader from '@material-ui/core/ListSubheader';
-import DashboardIcon from '@material-ui/icons/Dashboard';
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-import PeopleIcon from '@material-ui/icons/People';
-import BarChartIcon from '@material-ui/icons/BarChart';
-import LayersIcon from '@material-ui/icons/Layers';
-import AssignmentIcon from '@material-ui/icons/Assignment';
 import Button from '@material-ui/core/Button';
-
-import Box from '@material-ui/core/Box';
 import { MainListItems , SecondaryListItems } from './SidebarListItems';
 import List from '@material-ui/core/List';
 
@@ -105,15 +90,6 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: theme.spacing(4),
     paddingBottom: theme.spacing(4),
   },
-  // paper: {
-  //   padding: theme.spacing(2),
-  //   display: 'flex',
-  //   overflow: 'auto',
-  //   flexDirection: 'column',
-  // },
-  // fixedHeight: {
-  //   height: 100,
-  // },
   button: {
       color: '#fff',
   }
@@ -184,6 +160,7 @@ export default function Dashboard(props) {
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         {/* the props.children component allows content to be passed into the main section */}
+        {/* this is the part where the actual content goes */}
         {props.children}
       </main>
     </div>

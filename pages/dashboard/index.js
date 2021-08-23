@@ -5,6 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import { makeStyles, Typography } from '@material-ui/core';
 import Paper from '@material-ui/core/Paper';
 import ExamsTable from '../../components/dashComponents/ExamsTable';
+import ExamsTableV2 from '../../components/dashComponents/ExamsTableV2';
 
 
 
@@ -32,7 +33,18 @@ export default function test() {
         <div>
             <SidebarV2>
                 <Container maxWidth="lg" className={classes.container}>
+                    <Typography variant="h5" style={{paddingBottom: 20}}>
+                        Upcoming Exams
+                    </Typography>
                     <ExamsTable/>
+
+                    <Typography style={{paddingTop: 20, paddingBottom: 20}}>
+                        You're probs wondering why theres two different versions of this, it's because I can implement this as a table or as these cards. Let me know which design looks best and ill go forward with it. (The button UI is wack but can defs fix it and make it better)
+                    </Typography>
+                    <Typography variant="h5">
+                        Upcoming Exams
+                    </Typography>
+                    <ExamsTableV2/>
                     {/* <Grid container spacing={3}>
                         <Grid item xs={12}>
                         <Paper className={classes.paper}>

@@ -14,6 +14,9 @@ import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
+import Button from '@material-ui/core/Button';
+import ExamAlert from './ExamAlert'
+
 
 const useRowStyles = makeStyles({
   root: {
@@ -23,9 +26,9 @@ const useRowStyles = makeStyles({
   },
 });
 
-function createData(exam, subject, date, time) {
+function createData(exam, subject, date, time, available) {
   return {
-    exam, subject, date, time
+    exam, subject, date, time, available
   };
 }
 
@@ -53,6 +56,10 @@ function Row(props) {
         </TableCell>
         <TableCell align="right">{row.date}</TableCell>
         <TableCell align="right">{row.time}</TableCell>
+        <TableCell align="right">
+          <ExamAlert rowDisable={row.available}/>
+        </TableCell>
+
       </TableRow>
       <TableRow>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
@@ -72,9 +79,9 @@ function Row(props) {
 
 
 const rows = [
-  createData('Final Exam', 'MATH101', '12/12/12', '4:20'),
-  createData('Final Exam', 'SCIE101', '12/12/12', '4:20'),
-  createData('Final Exam', 'ENG101', '12/12/12', '4:20'),
+  createData('Final Exam', 'MATH101', '12/12/12', '4:20', false),
+  createData('Final Exam', 'SCIE101', '12/12/12', '4:20', true),
+  createData('Final Exam', 'ENG101', '12/12/12', '4:20', true),
 ];
 
 export default function CollapsibleTable() {
@@ -87,6 +94,7 @@ export default function CollapsibleTable() {
             <TableCell>EXAM</TableCell>
             <TableCell align="right">DATE</TableCell>
             <TableCell align="right">TIME</TableCell>
+            <TableCell align="right">ACCESS</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
