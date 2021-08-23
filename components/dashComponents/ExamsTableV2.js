@@ -43,97 +43,102 @@ export default function ExamsTableV2() {
     return (
         <div>
             <Container className={classes.container}>
-                <Grid container spacing={3}>
-                    <Grid item xs={12}>
-                        <Paper className={classes.paper}>
-                            <Grid container wrap="nowrap" spacing={2}>
-                                <Grid item xs={3}>
-                                    <Typography variant="h6">EXAM</Typography>
+                <Paper style={{height: 680}}>
+                    <Container>
 
-                                </Grid>
-                                <Grid item xs={3}>
-                                    <Typography variant="h6">DATE</Typography>
+                        <Grid container spacing={3}>
+                            <Grid item xs={12}>
+                                <Paper className={classes.paper} variant="outlined" style={{marginTop: 16}}>
+                                    <Grid container wrap="nowrap" spacing={2}>
+                                        <Grid item xs={3}>
+                                            <Typography variant="h6">EXAM</Typography>
 
-                                </Grid>
-                                <Grid item xs={3}>
-                                    <Typography variant="h6">TIME</Typography>
-                                </Grid>
-                                <Grid item xs={3}>
-                                    <Typography variant="h6" align="right">ACCESS</Typography>
-                                </Grid>
+                                        </Grid>
+                                        <Grid item xs={3}>
+                                            <Typography variant="h6">DATE</Typography>
+
+                                        </Grid>
+                                        <Grid item xs={3}>
+                                            <Typography variant="h6">TIME</Typography>
+                                        </Grid>
+                                        <Grid item xs={3}>
+                                            <Typography variant="h6" align="right">ACCESS</Typography>
+                                        </Grid>
+                                    </Grid>
+                                </Paper>
                             </Grid>
-                        </Paper>
-                    </Grid>
-                    <Grid item xs={12}>
-                        <Paper className={classes.paper}>
-                            <Grid container wrap="nowrap" spacing={2}>
-                                <Grid item xs={3}>
-                                    <Typography>Final Exam</Typography>
-                                    <Typography>Math101</Typography>
+                            <Grid item xs={12}>
+                                <Paper className={classes.paper} variant="outlined">
+                                    <Grid container wrap="nowrap" spacing={2}>
+                                        <Grid item xs={3}>
+                                            <Typography>Final Exam</Typography>
+                                            <Typography>Math101</Typography>
 
-                                </Grid>
-                                <Grid item xs={3}>
-                                    <Typography>12/12/12</Typography>
-                                </Grid>
-                                <Grid item xs={3}>
-                                    <Typography>4:20</Typography>
+                                        </Grid>
+                                        <Grid item xs={3}>
+                                            <Typography>12/12/12</Typography>
+                                        </Grid>
+                                        <Grid item xs={3}>
+                                            <Typography>4:20</Typography>
 
-                                </Grid>
-                                <Grid item xs={3} align="right">
-                                    <Button color="secondary">
-                                        Start Exam
-                                    </Button>
-                                </Grid>
+                                        </Grid>
+                                        <Grid item xs={3} align="right">
+                                            <Button color="secondary">
+                                                Start Exam
+                                            </Button>
+                                        </Grid>
+                                    </Grid>
+                                </Paper>
                             </Grid>
-                        </Paper>
-                    </Grid>
-                    <Grid item xs={12}>
-                        <Paper className={classes.paper}>
-                            <Grid container wrap="nowrap" spacing={2}>
-                                <Grid item xs={3}>
-                                    <Typography>Final Exam</Typography>
-                                    <Typography>Math101</Typography>
+                            <Grid item xs={12}>
+                                <Paper className={classes.paper} variant="outlined">
+                                    <Grid container wrap="nowrap" spacing={2}>
+                                        <Grid item xs={3}>
+                                            <Typography>Final Exam</Typography>
+                                            <Typography>Math101</Typography>
 
-                                </Grid>
-                                <Grid item xs={3}>
-                                    <Typography>12/12/12</Typography>
-                                </Grid>
-                                <Grid item xs={3}>
-                                    <Typography>4:20</Typography>
+                                        </Grid>
+                                        <Grid item xs={3}>
+                                            <Typography>12/12/12</Typography>
+                                        </Grid>
+                                        <Grid item xs={3}>
+                                            <Typography>4:20</Typography>
 
-                                </Grid>
-                                <Grid item xs={3} align="right">
-                                    <Button color="secondary">
-                                        Start Exam
-                                    </Button>
-                                </Grid>
+                                        </Grid>
+                                        <Grid item xs={3} align="right">
+                                            <Button color="secondary">
+                                                Start Exam
+                                            </Button>
+                                        </Grid>
+                                    </Grid>
+                                </Paper>
                             </Grid>
-                        </Paper>
-                    </Grid>
-                    <Grid item xs={12}>
-                        <Paper className={classes.paper}>
-                            <Grid container wrap="nowrap" spacing={2}>
-                                <Grid item xs={3}>
-                                    <Typography>Final Exam</Typography>
-                                    <Typography>Math101</Typography>
+                            <Grid item xs={12}>
+                                <Paper className={classes.paper} variant="outlined">
+                                    <Grid container wrap="nowrap" spacing={2}>
+                                        <Grid item xs={3}>
+                                            <Typography>Final Exam</Typography>
+                                            <Typography>Math101</Typography>
 
-                                </Grid>
-                                <Grid item xs={3}>
-                                    <Typography>12/12/12</Typography>
-                                </Grid>
-                                <Grid item xs={3}>
-                                    <Typography>4:20</Typography>
+                                        </Grid>
+                                        <Grid item xs={3}>
+                                            <Typography>12/12/12</Typography>
+                                        </Grid>
+                                        <Grid item xs={3}>
+                                            <Typography>4:20</Typography>
 
-                                </Grid>
-                                <Grid item xs={3} align="right">
-                                    <Button color="secondary">
-                                        Start Exam
-                                    </Button>
-                                </Grid>
+                                        </Grid>
+                                        <Grid item xs={3} align="right">
+                                            <Button color="secondary">
+                                                Start Exam
+                                            </Button>
+                                        </Grid>
+                                    </Grid>
+                                </Paper>
                             </Grid>
-                        </Paper>
-                    </Grid>
-                </Grid>
+                        </Grid>
+                    </Container>
+                </Paper>
             </Container>
         </div>
     )
