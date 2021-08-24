@@ -32,7 +32,7 @@ export default function test() {
     return (
         <div>
             <SidebarV2>
-                <Container maxWidth="lg" className={classes.container}>
+                
                     <Typography variant="h5" style={{paddingBottom: 20}}>
                         Upcoming Exams
                     </Typography>
@@ -67,7 +67,7 @@ export default function test() {
                         </Grid>
                         
                     </Grid> */}
-                </Container>
+
             </SidebarV2>
         </div>
     )

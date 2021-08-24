@@ -16,6 +16,7 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import Button from '@material-ui/core/Button';
 import { MainListItems, SecondaryListItems } from './SidebarListItems';
 import List from '@material-ui/core/List';
+import Container from '@material-ui/core/Container';
 
 
 
@@ -92,7 +93,7 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     color: '#fff',
-  }
+  },
 }));
 
 // Above was all the styling for the components
@@ -112,8 +113,8 @@ export default function Dashboard(props) {
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)} >
-        <Toolbar className={classes.toolbar}>
+      <AppBar elevation={0} position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)} >
+        <Toolbar className={classes.toolbar}  >
           <IconButton
             edge="start"
             color="inherit"
@@ -162,7 +163,9 @@ export default function Dashboard(props) {
         <div className={classes.appBarSpacer} />
         {/* the props.children component allows content to be passed into the main section */}
         {/* this is the part where the actual content goes */}
-        {props.children}
+        <Container maxWidth="lg" className={classes.container}>
+          {props.children}
+        </Container>
       </main>
     </div>
   );

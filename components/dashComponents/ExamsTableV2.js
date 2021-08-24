@@ -42,7 +42,8 @@ const useStyles = makeStyles((theme) => ({
     button: {
         display: 'flex',
         justifyContent: 'flex-end',
-        alignContent: 'center'
+        alignContent: 'center',
+        alignItems: 'center',
 
     }
 }))
