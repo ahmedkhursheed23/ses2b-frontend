@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
-
 import Collapse from '@material-ui/core/Collapse';
 import IconButton from '@material-ui/core/IconButton';
 import Table from '@material-ui/core/Table';
@@ -15,7 +14,7 @@ import Paper from '@material-ui/core/Paper';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import Button from '@material-ui/core/Button';
-import ExamAlert from './ExamAlert'
+import ExamAlert from './ExamsAlert'
 
 
 const useRowStyles = makeStyles({
@@ -23,6 +22,9 @@ const useRowStyles = makeStyles({
     '& > *': {
       borderBottom: 'unset',
     },
+  },
+  iconButton: {
+    padding: 0,
   },
 });
 
@@ -41,7 +43,7 @@ function Row(props) {
     <React.Fragment>
       <TableRow className={classes.root}>
         <TableCell>
-          <IconButton aria-label="expand row" size="small" onClick={() => setOpen(!open)}>
+          <IconButton aria-label="expand row" size="small" onClick={() => setOpen(!open)} className={classes.iconButton}>
             {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
           </IconButton>
         </TableCell>
@@ -52,18 +54,17 @@ function Row(props) {
           <Typography variant='body2'>
             {row.subject}
           </Typography>
-
         </TableCell>
-        <TableCell align="right">{row.date}</TableCell>
+        <TableCell align="right" >{row.date}</TableCell>
         <TableCell align="right">{row.time}</TableCell>
-        <TableCell align="right">
-          <ExamAlert isDisabled={row.available} />
+        <TableCell align="right" >
+            <ExamAlert isDisabled={true}/>
         </TableCell>
 
       </TableRow>
       <TableRow>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
-          <Collapse in={open} timeout="auto" unmountOnExit>
+          <Collapse in={open} timeout="auto" >
             <Typography variant="h6" gutterBottom component="div">
               Details
             </Typography>
@@ -80,13 +81,11 @@ function Row(props) {
 
 const rows = [
   createData('Final Exam', 'MATH101', '12/12/12', '4:20', false),
-  createData('Final Exam', 'SCIE101', '12/12/12', '4:20', true),
-  createData('Final Exam', 'ENG101', '12/12/12', '4:20', true),
 ];
 
 export default function CollapsibleTable() {
   return (
-    <TableContainer component={Paper}>
+    <TableContainer component={Paper} elevation={0}>
       <Table aria-label="collapsible table">
         <TableHead>
           <TableRow>

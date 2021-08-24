@@ -4,8 +4,9 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles, Typography } from '@material-ui/core';
 import Paper from '@material-ui/core/Paper';
-import ExamsTable from '../../components/dashComponents/ExamsTable';
-import ExamsTableV2 from '../../components/dashComponents/ExamsTableV2';
+import ExamsTable from '../../components/dashComponents/upcomingExams/ExamsTable';
+import ExamsTableV2 from '../../components/dashComponents/upcomingExams/ExamsTableV2';
+import ExamsCurrent from '../../components/dashComponents/upcomingExams/ExamsCurrent';
 
 
 
@@ -26,25 +27,39 @@ const useStyles = makeStyles((theme) => ({
     },
 }))
 
-export default function test() {
+export default function test(props) {
   const classes = useStyles();
+  const [showCurrent, setCurrent] = React.useState(false);
+
+  const handleAgree = () => {
+    setCurrent(true);
+    console.log("Index side working");
+  }
     
     return (
         <div>
             <SidebarV2>
-                
-                    <Typography variant="h5" style={{paddingBottom: 20}}>
+                    { showCurrent === true ? 
+                        <div>
+                            <Typography variant="h5" style={{paddingBottom: 20}}>
+                                Current Exams
+                            </Typography>
+                            <ExamsCurrent/>
+                        </div>
+                        
+                    : false}
+                    <Typography variant="h5" style={{paddingBottom: 20, paddingTop: 40}}>
                         Upcoming Exams
                     </Typography>
-                    <ExamsTable/>
+                    <ExamsTable handleAgree = {handleAgree} test1="test"/>
 
-                    <Typography style={{paddingTop: 20, paddingBottom: 20}}>
+                    {/* <Typography style={{paddingTop: 20, paddingBottom: 20}}>
                         You're probs wondering why there's two different versions of this, it's because I can implement this as a table or as a grid. Let me know which design looks best and ill go forward with it.
                     </Typography>
                     <Typography variant="h5">
                         Upcoming Exams
                     </Typography>
-                    <ExamsTableV2/>
+                    <ExamsTableV2/> */}
                     {/* <Grid container spacing={3}>
                         <Grid item xs={12}>
                         <Paper className={classes.paper}>

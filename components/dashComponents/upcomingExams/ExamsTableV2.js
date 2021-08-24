@@ -6,7 +6,7 @@ import { Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
-import ExamAlert from './ExamAlert';
+import ExamAlert from './ExamsAlert';
 
 // This is a second version of the exam table to show different styles that we can implement.
 
@@ -58,7 +58,7 @@ export default function ExamsTableV2() {
     return (
         <div>
             <Container className={classes.container}>
-                <Paper style={{ height: '100%' }}>
+                <Paper style={{ height: '100%' }} variant="outlined">
                     {/* this second container is to hold the grid together */}
                     <Container style={{ paddingBottom: 28, paddingTop: 28 }}>
                         <Grid container spacing={3}>

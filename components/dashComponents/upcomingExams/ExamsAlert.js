@@ -17,6 +17,13 @@ export default function AlertDialog(props) {
     setOpen(false);
   };
 
+  const handleAgree = () => {
+    handleClose();
+    console.log("alert is firing")
+    props.handleAgree(true);
+
+  }
+
   return (
     <div>
       <Button variant="outlined" color="secondary" onClick={handleClickOpen} disabled={props.isDisabled}>
@@ -40,7 +47,7 @@ export default function AlertDialog(props) {
           <Button onClick={handleClose} color="secondary">
             Disagree
           </Button>
-          <Button onClick={handleClose} color="secondary" autoFocus>
+          <Button onClick={handleAgree} color="secondary" autoFocus>
             Agree
           </Button>
         </DialogActions>
