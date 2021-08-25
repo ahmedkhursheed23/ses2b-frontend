@@ -40,15 +40,19 @@ export default function test(props) {
         <div>
             <SidebarV2>
                     { showCurrent === true ? 
-                        <div>
+                        <div style={{paddingBottom: 60}}>
                             <Typography variant="h5" style={{paddingBottom: 20}}>
                                 Current Exams
                             </Typography>
-                            <ExamsCurrent/>
+                            <ExamsCurrent />
                         </div>
                         
-                    : false}
-                    <Typography variant="h5" style={{paddingBottom: 20, paddingTop: 40}}>
+                    : 
+                    <Typography color="secondary" variant="body1" style={{paddingBottom: 20}}>
+                        You have no current exams
+                    </Typography>
+                    }
+                    <Typography variant="h5" style={{paddingBottom: 20}}>
                         Upcoming Exams
                     </Typography>
                     <ExamsTable handleAgree = {handleAgree} test1="test"/>

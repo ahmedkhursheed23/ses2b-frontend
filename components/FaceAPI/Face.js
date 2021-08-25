@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import * as faceapi from 'face-api.js';
 import styles from '../../styles/Face.module.css';
 import Router, { useRouter } from "next/router";
+import Button from '@material-ui/core/Button'
 
 //pass prop for next page - props.nextPage (e.g. <Face nextPage = "/about" id = "1"/>)
 function Face(props) {
@@ -178,6 +179,11 @@ function Face(props) {
       <div className={styles.display}>
         <video ref={videoRef} autoPlay muted height={videoHeight} width={videoWidth} onPlay={handleVideoOnPlay}/>
         <canvas ref={canvasRef} className={styles.canvas}/>
+      </div>
+      <div style={{display: 'flex', justifyContent: 'center'}}>
+        {/* <Button color="secondary" onClick={handler}> IM SICK OF MY FACE!</Button> */}
+        <Button color="secondary" onClick={stopCamera}> IM SICK OF MY FACE!</Button>
+        <Button color="secondary" onClick={startVideo}> Turn on camera ;)</Button>
       </div>
     </div>
   );

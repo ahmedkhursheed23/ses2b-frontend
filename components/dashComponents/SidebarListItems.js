@@ -19,7 +19,7 @@ export const MainListItems = (
         <ListItemIcon>
           <DashboardIcon />
         </ListItemIcon>
-        <ListItemText primary="Upcoming Exams" />
+        <ListItemText primary="Exam Hub" />
       </ListItem>
     </Link>
     <Link href="/dashboard/testEquipment">

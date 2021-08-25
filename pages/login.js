@@ -116,15 +116,15 @@ export default function SignInSide() {
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
-                  {"Don't have an account? Sign Up"}
+                <Link href="/" variant="body2">
+                  {"Home"}
                 </Link>
               </Grid>
             </Grid>
             {/* <Box mt={5}>
               <Copyright />
             </Box> */}
-           <Button
+           {/* <Button
               type="submit"
               fullWidth
               variant="text"
@@ -133,7 +133,7 @@ export default function SignInSide() {
               href="/"
             >
               Go Back
-            </Button>
+            </Button> */}
           </form>
         </div>
       </Grid>

@@ -102,7 +102,7 @@ export default function CollapsibleTable(props) {
     rows[0].status = true; 
   }
   return (
-    <TableContainer component={Paper} elevation={0}>
+    <TableContainer component={Paper} elevation={0} >
       <Table aria-label="collapsible table">
         <TableHead>
           <TableRow>
