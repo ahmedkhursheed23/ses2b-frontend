@@ -129,4 +129,15 @@
 
 }
 
+.error404{
+  margin: 0 auto;
+  padding: 5%;
+}
 
+
+.giff{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: fit-content;
+}
