@@ -21,6 +21,10 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(1),
     marginBottom: theme.spacing(1),
   },
+  buttonSpace: {
+    display: 'flex',
+    justifyContent: 'space-around'
+  }
 }));
 
 function getSteps() {
@@ -76,8 +80,8 @@ export default function HorizontalLabelPositionBelowStepper(props) {
         ) : (
           <div>
             {props.children}
-            <Typography className={classes.instructions}>{getStepContent(activeStep)}</Typography>
-            <div>
+            <Typography className={classes.instructions} align="center">{getStepContent(activeStep)}</Typography>
+            <div className={classes.buttonSpace}>
               <Button
                 disabled={activeStep === 0}
                 onClick={handleBack}
