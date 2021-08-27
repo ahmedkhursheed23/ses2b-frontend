@@ -1,12 +1,14 @@
-import React, { forwardRef, useEffect, useRef, useImperativeHandle } from 'react';
+import React, { useEffect, useRef } from 'react';
 import * as faceapi from 'face-api.js';
 import styles from '../../styles/Face.module.css';
 import Router, { useRouter } from "next/router";
 import Button from '@material-ui/core/Button'
-import { CssBaseline } from '@material-ui/core';
+
+// I made this second version of the Face.js file incase I messed it up
+// Im messing around with the styling abit so this it a good reference for me
 
 //pass prop for next page - props.nextPage (e.g. <Face nextPage = "/about" id = "1"/>)
-const Face = React.forwardRef((props, ref) => {
+function Face(props) {
 
   const videoHeight = 360;
   const videoWidth = 480;
@@ -30,7 +32,6 @@ const Face = React.forwardRef((props, ref) => {
 
     // handle exit page
     Router.events.on("routeChangeStart", handler);
-    console.log(Router.events.on("routeChangeStart", handler))
 
     return () => {
       Router.events.off("routeChangeStart", handler);
@@ -48,12 +49,12 @@ const Face = React.forwardRef((props, ref) => {
   // handle exit page
   const handler = () => {
       if (isMounted) {
-          // if (isConfirm && !window.confirm(message)) {
-          //   throw "Route Canceled";
-          // } else {
+          if (isConfirm && !window.confirm(message)) {
+            throw "Route Canceled";
+          } else {
             isMounted = false;
             stopCamera();
-          // }
+          }
       }
     };
 
@@ -175,32 +176,21 @@ const Face = React.forwardRef((props, ref) => {
     }
   }
 
-  //calling handler method from parent(testEquipment)
-    useImperativeHandle(ref, () => ({
-      getClose() {
-        handler();
-      },
-      getStart() {
-        startVideo();
-      }
-    }));
-
-  
-
 
   return (
-    <div style={{display: 'inline-block', padding: 6}}>
-      <div className={styles.display} >
-        <video ref={videoRef} autoPlay muted height={props.videoHeight} width={props.videoWidth} onPlay={handleVideoOnPlay}/>
+    <div>
+      <div className={styles.display}>
+        {console.log(props.newFlex)}
+        <video ref={videoRef} autoPlay muted height={videoHeight} width={props.videoWidth} onPlay={handleVideoOnPlay}/>
         <canvas ref={canvasRef} className={styles.canvas}/>
       </div>
-      <div style={{display: 'flex', justifyContent: 'center'}}>
-        {/* <Button color="secondary" onClick={handler}> IM SICK OF MY FACE!</Button> */}
-        {/* <Button color="secondary" onClick={stopCamera}> IM SICK OF MY FACE!</Button>
-        <Button color="secondary" onClick={startVideo}> Turn on camera ;)</Button> */}
-      </div>
+      {/* <div style={{display: 'flex', justifyContent: 'center'}}>
+        <Button color="secondary" onClick={handler}> IM SICK OF MY FACE!</Button>
+        <Button color="secondary" onClick={stopCamera}> IM SICK OF MY FACE!</Button>
+        <Button color="secondary" onClick={startVideo}> Turn on camera ;)</Button>
+      </div> */}
     </div>
   );
-})
+}
 
 export default Face;
