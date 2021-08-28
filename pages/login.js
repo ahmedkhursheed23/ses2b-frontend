@@ -12,6 +12,8 @@ import Grid from '@material-ui/core/Grid';
 import LockIcon from '@material-ui/icons/Lock';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
+import Logo from '../src/Images/Logo.png'
+import Image from 'next/image'
 
 function Copyright() {
   return (
@@ -31,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
     height: '100vh',
   },
   image: {
-    backgroundImage: 'url(https://wordpress-futures-prod.s3.ap-southeast-2.amazonaws.com/wp-content/uploads/2019/08/14150611/Inside-the-reading-room-Roberts_hr.jpg)',
+    backgroundImage: 'url(https://images.adsttc.com/media/images/5d5c/2e2e/284d/d1cd/8300/018f/slideshow/02_N7A9067_UTS_Central_credit_Andy_Roberts_hr.jpg?1566322166)',
     backgroundRepeat: 'no-repeat',
     backgroundColor:
       theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
@@ -55,6 +57,14 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
+  logo: {
+    color: 'white',
+    width:'60%', /* you can use % */
+    height: 'auto',
+    display: 'block',
+    marginleft: 'auto',
+    marginright: 'auto',
+  },
 }));
 
 export default function SignInSide() {
@@ -66,6 +76,9 @@ export default function SignInSide() {
       <Grid item xs={false} sm={4} md={7} className={classes.image} />
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
         <div className={classes.paper}>
+          <div className={classes.logo}>
+            <Image  src={Logo} alt="ProctorUTS Logo" />
+          </div>
           <Avatar className={classes.avatar}>
             <LockIcon />
           </Avatar>

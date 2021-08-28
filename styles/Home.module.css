@@ -77,6 +77,13 @@
   margin-top: 3rem;
 }
 
+.bigCard {
+  margin: 1rem;
+  padding: 1.5rem;
+  border-radius: 10px;
+  background-color: rgba(255,255,255,0.5);
+}
+
 .card {
   margin: 1rem;
   padding: 1.5rem;
@@ -88,7 +95,9 @@
   transition: color 0.15s ease, border-color 0.15s ease;
   width: 45%;
   min-height: 12em;
+  background-color: white;
 }
+
 
 .card:hover,
 .card:focus,
@@ -108,10 +117,6 @@
   line-height: 1.5;
 }
 
-.logo {
-  height: 1em;
-  margin-left: 0.5rem;
-}
 
 @media (max-width: 600px) {
   .grid {
@@ -123,21 +128,21 @@
 .header {
   height: 100%;
   width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
   /* background: #0070f3; */
-  background-image: url("https://assets.telegraphindia.com/abped/2020/Sep/1600356116_5-things.jpg");
+  background-image: url("https://www.lib.uts.edu.au/sites/default/files/2021-02/_87A2954_UTS%20Central%20Library_hr-2.jpg");
 
 
 }
 
-.error404{
-  margin: 0 auto;
-  padding: 5%;
-}
-
-
-.giff{
+.logo {
+  color: white;
+  width:30%; /* you can use % */
+  height: auto;
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: fit-content;
 }
+
