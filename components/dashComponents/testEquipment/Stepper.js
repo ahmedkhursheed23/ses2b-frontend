@@ -51,17 +51,17 @@ export default function HorizontalLabelPositionBelowStepper(props) {
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    console.log(activeStep);
-    props.setVideoWidth(300);
-    props.setVideoHeight(225);
-    props.setFlex('space-evenly');
+    
     props.setActiveStep((prevActiveStep) => prevActiveStep + 1);
     if(activeStep === 0)
       props.setDisplay('none');
     else if(activeStep === 1) {
       props.setDisplay('flex');
+      props.setFlex('space-evenly');
       props.setScreenHeight(249);
       props.setScreenWidth(324);
+      props.setVideoWidth(300);
+      props.setVideoHeight(225);
     } else if(activeStep === 2) {
       props.handleVideoClose();
       props.setDisplay('none');
@@ -69,19 +69,30 @@ export default function HorizontalLabelPositionBelowStepper(props) {
   };
 
   const handleBack = () => {
+    props.setActiveStep((prevActiveStep) => prevActiveStep - 1)
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
+    if(activeStep === 1) {
+      props.setDisplay('flex')
+      props.setVideoWidth(480)
+      props.setVideoHeight(360)
+    } else if (activeStep === 2) {
+      props.setScreenWidth(504)
+      props.setScreenHeight(384)
+      props.setDisplay('none')
+    }
+    
   };
 
   const handleReset = () => {
     setActiveStep(0);
+    props.setActiveStep(0);
     props.setVideoWidth(480);
     props.setVideoHeight(360);
     props.setScreenWidth(504);
     props.setScreenHeight(384);
     props.setFlex('center');
-    props.setActiveStep(0);
-    props.handleStartVideo();
     props.setDisplay('flex');
+    props.handleStartVideo();
   };
 
   return (

@@ -14,7 +14,7 @@ import Paper from '@material-ui/core/Paper';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import Button from '@material-ui/core/Button';
-import ExamAlert from './ExamsAlert'
+import Link from 'next/link';
 
 
 const useRowStyles = makeStyles({
@@ -57,8 +57,12 @@ function Row(props) {
         </TableCell>
         <TableCell align="right" >{row.date}</TableCell>
         <TableCell align="right">{row.time}</TableCell>
-        <TableCell align="right" >
-            <ExamAlert isDisabled={true}/>
+        <TableCell align="right" style={{width: 330}} size="small">
+          <Link href="/dashboard/examroom">
+            <Button style={{color: "#4caf50"}} variant="outlined">
+              Enter Exam Room
+            </Button>
+          </Link>
         </TableCell>
 
       </TableRow>

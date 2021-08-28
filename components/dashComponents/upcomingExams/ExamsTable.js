@@ -110,7 +110,7 @@ export default function CollapsibleTable(props) {
             <TableCell>EXAM</TableCell>
             <TableCell align="right">DATE</TableCell>
             <TableCell align="right">TIME</TableCell>
-            <TableCell align="right">ACCESS</TableCell>
+            <TableCell align="right" style={{width: 330}}>ACCESS</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
