@@ -33,9 +33,4 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-=======
-# ses2b-frontend
-next.js app with material ui
-
-Code is in Nikkideez branch
 >>>>>>> 0cd9231d6f69079c8cdfa63636aecfe9f05ff5fe
