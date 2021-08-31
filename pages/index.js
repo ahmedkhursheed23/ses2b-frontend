@@ -4,7 +4,7 @@ import styles from '../styles/Home.module.css'
 import Navbar from '../components/Navbar';
 import Link from 'next/link'
 import Grid from '@material-ui/core/Grid';
-import Logo from '../src/Images/Logo.png'
+import Logo from '../src/Images/Logo.png';
 
 
 export default function Home() {

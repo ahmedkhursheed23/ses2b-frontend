@@ -14,9 +14,13 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import Button from '@material-ui/core/Button';
-import { MainListItems, SecondaryListItems } from './SidebarListItems';
+import MainItemsList  from './SidebarListItemsV2';
 import List from '@material-ui/core/List';
 import Container from '@material-ui/core/Container';
+import Logo from '../../src/Images/Logo White.png';
+import Image from 'next/image';
+import styles from '../../styles/Home.module.css';
+import { ArrowLeft } from '@material-ui/icons';
 
 
 
@@ -28,6 +32,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
   },
   toolbar: {
+    boxShadow: "0px 1px 4px 1px rgba(0,0,0,0.25)",
     paddingRight: 24, // keep right padding when drawer closed
   },
   toolbarIcon: {
@@ -38,30 +43,27 @@ const useStyles = makeStyles((theme) => ({
     ...theme.mixins.toolbar,
   },
   appBar: {
+    
     zIndex: theme.zIndex.drawer + 1,
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
   },
-  appBarShift: {
-    marginLeft: drawerWidth,
-    width: `calc(100% - ${drawerWidth}px)`,
-    transition: theme.transitions.create(['width', 'margin'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  },
   menuButton: {
-    marginRight: 36,
+    marginRight: 9,
   },
   menuButtonHidden: {
     display: 'none',
   },
+  logo: {
+    //flexGrow: 1,
+  },
   title: {
-    flexGrow: 1,
+    //flexGrow: 1,
   },
   drawerPaper: {
+    boxShadow: "0px 1px 4px 1px rgba(0,0,0,0.05)",
     position: 'relative',
     whiteSpace: 'nowrap',
     width: drawerWidth,
@@ -76,10 +78,11 @@ const useStyles = makeStyles((theme) => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
-    width: theme.spacing(7),
+    width: theme.spacing(9),
     [theme.breakpoints.up('sm')]: {
       width: theme.spacing(9),
     },
+    color : "#806f6e",
   },
   appBarSpacer: theme.mixins.toolbar,
   content: {
@@ -94,6 +97,15 @@ const useStyles = makeStyles((theme) => ({
   button: {
     color: '#fff',
   },
+  toolbarButtonContainer: {
+    marginLeft: 'auto'
+  },
+  toolBarSecondaryItems:{
+    marginBottom: 'auto'
+  },
+  drawerItems: {
+    paddingTop: theme.spacing(2),
+  }
 }));
 
 // Above was all the styling for the components
@@ -110,33 +122,37 @@ export default function Dashboard(props) {
     setOpen(false);
   };
 
+  const page = "Dashboard";
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <AppBar elevation={0} position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)} >
+      <AppBar elevation={0} position="absolute" className={classes.appBar} >
         <Toolbar className={classes.toolbar}  >
-          <IconButton
+          <div className={classes.menuButton}><IconButton
             edge="start"
             color="inherit"
             aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            className={clsx(classes.menuButton, open && classes.menuButtonHidden)}
+            onClick={open ? handleDrawerClose : handleDrawerOpen}
+            className={clsx(classes.menuButton)}
           >
             <MenuIcon />
-          </IconButton>
-          <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-            Dashboard
-          </Typography>
-          <IconButton color="inherit">
-            <Badge badgeContent={4} color="secondary">
-              <NotificationsIcon />
-            </Badge>
-          </IconButton>
-          <Link href="/">
-            <Button className={classes.button}>
-              Logout
-            </Button>
-          </Link>
+          </IconButton></div>
+          <div className={styles.title} >
+            <a href="/dashboard"><Image src={Logo} alt="ProctorUTS Logo" width="146" height="48" /></a>
+          </div>
+
+          <div className={classes.toolbarButtonContainer}>
+            <IconButton color="inherit" >
+              <Badge badgeContent={4} color="secondary">
+                <NotificationsIcon />
+              </Badge>
+            </IconButton>
+            <Link href="/">
+              <Button className={classes.button} >
+                Logout
+              </Button>
+            </Link>
+          </div>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -153,10 +169,11 @@ export default function Dashboard(props) {
         </div>
         <Divider />
         {/* I'm pulling the actual icons with there respective links from the SidebarListItems file */}
-        <List>
-          {MainListItems}
+        <List className={classes.drawerItems}>
+          <div>
+            <MainItemsList />
+          </div>
           <Divider />
-          {SecondaryListItems}
         </List>
       </Drawer>
       <main className={classes.content}>

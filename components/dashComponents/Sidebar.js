@@ -83,7 +83,7 @@ const useStyles = makeStyles((theme) => ({
 export default function PersistentDrawerLeft(props) {
   const classes = useStyles();
   const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(true);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -103,7 +103,7 @@ export default function PersistentDrawerLeft(props) {
           [classes.appBarShift]: open,
         })}
       >
-        <Toolbar>
+        <Toolbar variant="dense">
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -114,7 +114,7 @@ export default function PersistentDrawerLeft(props) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap style={{ flexGrow: 1}}>
-            Dashboard
+            ProctorUTS
           </Typography>
           <Link href="/">
             <Button color="inherit">
