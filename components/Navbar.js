@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
   },
   logo: {
     color: 'white',
-    width:'10%', /* you can use % */
+    width: 200, /* you can use % */
     height: 'auto',
     marginleft: 'auto',
     marginright: 'auto',
@@ -37,7 +37,7 @@ export default function ButtonAppBar() {
 
   return (
     <div >
-      <AppBar position="static" color="inherit">
+      <AppBar position="static" color="inherit" elevation={0}>
         <Toolbar>
           {/* <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
             <MenuIcon />
@@ -49,15 +49,15 @@ export default function ButtonAppBar() {
               </div>
             </Link>
           </Typography>
-          <Link href="/login" >
-            <Button color="inherit" >Login</Button>
-          </Link>
           <Link href="https://www.uts.edu.au/current-students/managing-your-course/classes-and-assessment/exams/online-exams" >
             <Button color="inherit" >About</Button>
           </Link>
           <Link href="/contact" >
             <Button color="inherit" >Contact</Button>
-          </Link>         
+          </Link>    
+          <Link href="/login" >
+            <Button color="inherit" >Login</Button>
+          </Link>     
         </Toolbar>
       </AppBar>
     </div>
