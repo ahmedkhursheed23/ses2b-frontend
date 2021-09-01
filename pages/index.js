@@ -9,7 +9,7 @@ import Landin from '../src/Images/Landin.png'
 import Footer from '../components/Footer';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import { green } from '@material-ui/core/colors';
-
+import Button from '@material-ui/core/Button';
 
 export default function Home() {
   return (
@@ -27,6 +27,12 @@ export default function Home() {
               <Grid item xs={12} md={6}> 
               <div className={styles.mainText}>
                 <h1>Anti-Cheating AI <br/>for <span>students</span><br/>taking online exams.</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
+                <div className={styles.buttonN}>
+                  <Button variant="contained"  color="primary" className={styles.buttonN} onClick={() => { alert('clicked') }}>
+                    Login
+                  </Button>
+                </div>
               </div>
               </Grid>
               
