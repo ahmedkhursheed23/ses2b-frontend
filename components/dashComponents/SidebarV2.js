@@ -21,6 +21,7 @@ import Logo from '../../src/Images/Logo White.png';
 import Image from 'next/image';
 import styles from '../../styles/Home.module.css';
 import { ArrowLeft } from '@material-ui/icons';
+import { useRouter } from 'next/router';
 
 
 
@@ -114,6 +115,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Dashboard(props) {
   const classes = useStyles();
+  const router = useRouter(); 
   const [open, setOpen] = React.useState(false);
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -171,7 +173,7 @@ export default function Dashboard(props) {
         {/* I'm pulling the actual icons with there respective links from the SidebarListItems file */}
         <List className={classes.drawerItems}>
           <div>
-            <MainItemsList />
+            <MainItemsList currentItem={router.pathname} open={open}/>
           </div>
           <Divider />
         </List>
