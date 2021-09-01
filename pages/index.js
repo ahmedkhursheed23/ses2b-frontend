@@ -4,8 +4,9 @@ import styles from '../styles/Home.module.css'
 import Navbar from '../components/Navbar';
 import Link from 'next/link'
 import Grid from '@material-ui/core/Grid';
-import Logo from '../src/Images/Logo.png'
-import Landin from '../src/Images/Landin.png'
+import Logo from './../public/Images/Logo.png'
+import Landin from './../public/Images/Landin.png'
+// import Landin from '../src/Images/Landin.png'
 import Footer from '../components/Footer';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import { green } from '@material-ui/core/colors';
