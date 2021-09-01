@@ -2,7 +2,7 @@ import React, { useRef} from 'react'
 import SidebarV2 from '../../components/dashComponents/SidebarV2'
 import { Typography } from '@material-ui/core'
 import FaceStream from '../../components/FaceAPI/FaceStream'
-import WebRTC from '../../components/WebRTC/WebRTC'
+import ScreenShare from '../../components/WebRTC/ScreenShare'
 import Button from '@material-ui/core/Button'
 import Stepper from'../../components/dashComponents/testEquipment/Stepper'
 import Paper from '@material-ui/core/Paper'
@@ -49,7 +49,7 @@ export default function TestEquipment() {
                                 videoWidth={videoWidth} 
                                 videoHeight={videoHeight}
                                 ref={myref}/> */}
-                                <WebRTC />
+                                <ScreenShare />
                             </Paper>
                             {activeStep > 0 && activeStep < 3 ?
                                 <Paper variant="outlined" square

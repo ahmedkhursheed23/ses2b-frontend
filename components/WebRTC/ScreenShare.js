@@ -1,40 +1,52 @@
-if (adapter.browserDetails.browser == 'firefox') {
-  adapter.browserShim.shimGetDisplayMedia(window, 'screen');
-}
+import React, { useRef, useState } from "react";
 
-function handleSuccess(stream) {
-  startButton.disabled = true;
-  const video = document.querySelector('video');
-  video.srcObject = stream;
+export default function ScreenShare(props) {
 
-  // demonstrates how to detect that the user has stopped
-  // sharing the screen via the browser UI.
-  stream.getVideoTracks()[0].addEventListener('ended', () => {
-    errorMsg('The user has ended sharing the screen');
-    startButton.disabled = false;
-  });
-}
+  const videoRef = useRef();
+  const videoHeight = 360;
+  const videoWidth = 480;
 
-function handleError(error) {
-  errorMsg(`getDisplayMedia error: ${error.name}`, error);
-}
+  const [feedback, setFeedback] = useState("")
 
-function errorMsg(msg, error) {
-  const errorElement = document.querySelector('#errorMsg');
-  errorElement.innerHTML += `<p>${msg}</p>`;
-  if (typeof error !== 'undefined') {
-    console.error(error);
+//   if (adapter.browserDetails.browser == 'firefox') {
+//   adapter.browserShim.shimGetDisplayMedia(window, 'screen');
+// }
+  
+
+  function handleSuccess(stream) {
+    startButton.disabled = true;
+    const video = document.querySelector('video');
+    video.srcObject = stream;
+
+    stream.getVideoTracks()[0].addEventListener('ended', () => {
+      errorMsg('The user has ended sharing the screen');
+      startButton.disabled = false;
+    });
   }
-}
 
-const startButton = document.getElementById('startButton');
-startButton.addEventListener('click', () => {
-  navigator.mediaDevices.getDisplayMedia({video: true})
-      .then(handleSuccess, handleError);
-});
+  function handleError(error) {
+    errorMsg(`getDisplayMedia error: ${error.name}`, error);
+  }
 
-if ((navigator.mediaDevices && 'getDisplayMedia' in navigator.mediaDevices)) {
-  startButton.disabled = false;
-} else {
-  errorMsg('getDisplayMedia is not supported');
+  function errorMsg(msg, error) {
+    setFeedback(msg);
+    if (typeof error !== 'undefined') {
+      console.error(error);
+    }
+  }
+
+  function startButton() {
+    navigator.mediaDevices.getDisplayMedia({video: true})
+        .then(handleSuccess, handleError);
+  }
+
+
+
+  return (
+    <div>
+      <video ref={videoRef} height={videoHeight} width={videoWidth} playsInline autoPlay muted />
+      <button onClick={() => startButton()}>Start</button>
+      <p>{ feedback }</p>
+    </div>
+  );
 }
