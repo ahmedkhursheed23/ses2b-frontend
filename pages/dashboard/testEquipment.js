@@ -42,7 +42,7 @@ export default function testEquipment() {
                     handleVideoClose={handleCloseVideo}
                     handleStartVideo={handleStartVideo}
                     >
-                        <div style={{display: 'flex', justifyContent: newFlex, alignItems: 'center', height: 384}}>
+                        <div style={{display: 'flex', justifyContent: newFlex, alignItems: 'center', height: 470}}>
                             <Paper style={{padding: 5, display: displayType}} variant="outlined" square display="none">
                                 <Face 
                                 videoWidth={videoWidth} 

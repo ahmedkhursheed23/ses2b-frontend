@@ -8,12 +8,14 @@
 }
 
 .main {
+ /*  height: 100%; */
   padding: 6rem 0;
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
 }
 
 .footer {
@@ -80,9 +82,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
+  flex-wrap: wrap;/* 
   max-width: 800px;
-  margin-top: 3rem;
+  margin-top: 3rem; */  
 }
 
 .bigCard {
@@ -105,7 +107,26 @@
   min-height: 12em;
   background-color: white;
 }
+.mainText{
+  margin-left: 25%;
+  margin-right: 0%;
+  
+}
 
+.mainText h1{
+  font-weight: bold;
+  text-align: left;
+  font-size: 500%;
+  color: black;
+  line-height: 100%;
+}
+
+.mainText span{
+
+  background: linear-gradient(to right, #4259D4, #8f94fb); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 
 .card:hover,
 .card:focus,
@@ -139,8 +160,8 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  /* background: #0070f3; */
-  background-image: url("https://www.lib.uts.edu.au/sites/default/files/2021-02/_87A2954_UTS%20Central%20Library_hr-2.jpg");
+  /* background: #0070f3; *//* 
+  background-image: url("https://www.lib.uts.edu.au/sites/default/files/2021-02/_87A2954_UTS%20Central%20Library_hr-2.jpg"); */
 
 
 }
@@ -154,3 +175,19 @@
   margin-right: auto;
 }
 
+.grid{
+  height: 100%;
+}
+
+.tickGrid{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.landin{
+  width: 70%;
+  margin-right: 25%;
+  margin-top: 10%;
+
+}
