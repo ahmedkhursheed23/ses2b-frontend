@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }))
 
-export default function test(props) {
+export default function Test(props) {
   const classes = useStyles();
   const [showCurrent, setCurrent] = React.useState(false);
 

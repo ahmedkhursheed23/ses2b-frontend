@@ -1,9 +1,9 @@
-import Face from '../../components/FaceAPI/Face'
+import FaceAuth from '../../components/FaceAPI/FaceAuth'
 
 export default function faceapi() {
     return (
         <div>
-            <Face nextPage = "/dashboard"/>
+            <FaceAuth nextPage = "/dashboard"/>
         </div>
     )
 }

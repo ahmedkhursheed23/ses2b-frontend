@@ -1,14 +1,15 @@
 import React, { useRef} from 'react'
 import SidebarV2 from '../../components/dashComponents/SidebarV2'
 import { Typography } from '@material-ui/core'
-import Face from '../../components/FaceAPI/Face'
+import FaceStream from '../../components/FaceAPI/FaceStream'
+import WebRTC from '../../components/WebRTC/WebRTC'
 import Button from '@material-ui/core/Button'
 import Stepper from'../../components/dashComponents/testEquipment/Stepper'
 import Paper from '@material-ui/core/Paper'
 import Hidden from '@material-ui/core/Hidden';
 import { Container } from '@material-ui/core'
 //322, 247
-export default function testEquipment() {
+export default function TestEquipment() {
     const [showFace, setFace] = React.useState(false)
     const [videoWidth, setVideoWidth] = React.useState(480)
     const [videoHeight, setVideoHeight] = React.useState(360)
@@ -44,16 +45,19 @@ export default function testEquipment() {
                     >
                         <div style={{display: 'flex', justifyContent: newFlex, alignItems: 'center', height: 470}}>
                             <Paper style={{padding: 5, display: displayType}} variant="outlined" square display="none">
-                                <Face 
+                                {/* <FaceStream 
                                 videoWidth={videoWidth} 
                                 videoHeight={videoHeight}
-                                ref={myref}/>
-
+                                ref={myref}/> */}
+                                <WebRTC />
                             </Paper>
                             {activeStep > 0 && activeStep < 3 ?
                                 <Paper variant="outlined" square
                                 style={{height: screenHeight, width: screenWidth, display: 'flex', justifyContent: 'center', alignItems: 'center'}}> 
-                                    This will display the screenshare 
+                                    <FaceStream 
+                                    videoWidth={videoWidth} 
+                                    videoHeight={videoHeight}
+                                    ref={myref}/>
                                 </Paper>
                             : activeStep > 2 && 
                                 <div>
