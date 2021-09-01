@@ -4,7 +4,7 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles, Typography } from '@material-ui/core';
 import Paper from '@material-ui/core/Paper';
-import ExamsTable from '../../components/dashComponents/ExamsTable';
+import ExamsTable from '../../components/dashComponents/upcomingExams/ExamsTable';
 
 //This is a test file that I used to try out some new functionality. You can ignore for now.
 
@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }))
 
-export default function test() {
+export default function Test() {
   const classes = useStyles();
     
     return (
