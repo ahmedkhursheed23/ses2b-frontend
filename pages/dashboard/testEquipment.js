@@ -45,19 +45,15 @@ export default function TestEquipment() {
                     >
                         <div style={{display: 'flex', justifyContent: newFlex, alignItems: 'center', height: 470}}>
                             <Paper style={{padding: 5, display: displayType}} variant="outlined" square display="none">
-                                {/* <FaceStream 
+                                <FaceStream 
                                 videoWidth={videoWidth} 
                                 videoHeight={videoHeight}
-                                ref={myref}/> */}
-                                <ScreenShare />
+                                ref={myref}/>
                             </Paper>
                             {activeStep > 0 && activeStep < 3 ?
                                 <Paper variant="outlined" square
                                 style={{height: screenHeight, width: screenWidth, display: 'flex', justifyContent: 'center', alignItems: 'center'}}> 
-                                    <FaceStream 
-                                    videoWidth={videoWidth} 
-                                    videoHeight={videoHeight}
-                                    ref={myref}/>
+                                    <ScreenShare />
                                 </Paper>
                             : activeStep > 2 && 
                                 <div>

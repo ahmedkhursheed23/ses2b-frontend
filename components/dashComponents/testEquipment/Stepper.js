@@ -28,15 +28,15 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function getSteps() {
-  return ['Activate Screen Share', 'Calibrate Webcam', 'Complete Calibration'];
+  return ['Calibrate Webcam', 'Activate Screen Share', 'Complete Calibration'];
 }
 
 function getStepContent(step) {
   switch (step) {
     case 0:
-      return 'Making sure the screen share is working';
-    case 1:
       return 'Making sure the webcam is working and detecting appropiate objects (Yes the AI is objectifying you)';
+    case 1:
+      return 'Making sure the screen share is working';
     case 2:
       return 'This is going to do a final check with both APIs running';
     default:

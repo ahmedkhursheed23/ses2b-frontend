@@ -1,11 +1,10 @@
-import WebRTC from '../../components/WebRTC/WebRTC'
+import ScreenShare from '../../components/WebRTC/ScreenShare'
 import Face from '../../components/FaceAPI/FaceStream'
 
 export default function faceapi() {
     return (
         <div>
-            <Face />
-            <WebRTC />
+            <ScreenShare />
         </div>
     )
 }
