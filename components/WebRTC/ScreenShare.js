@@ -15,8 +15,8 @@ export default function ScreenShare(props) {
 
   function handleSuccess(stream) {
     startButton.disabled = true;
-    const video = document.querySelector('video');
-    video.srcObject = stream;
+    // const video = document.querySelector('video');
+    videoRef.current.srcObject = stream;
 
     stream.getVideoTracks()[0].addEventListener('ended', () => {
       errorMsg('The user has ended sharing the screen');
@@ -36,7 +36,7 @@ export default function ScreenShare(props) {
   }
 
   function startButton() {
-    navigator.mediaDevices.getDisplayMedia({video: true})
+    navigator.mediaDevices.getDisplayMedia({ video: {}})
         .then(handleSuccess, handleError);
   }
 

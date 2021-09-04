@@ -140,7 +140,9 @@ export default function Dashboard(props) {
             <MenuIcon />
           </IconButton></div>
           <div className={styles.title} >
-            <a href="/dashboard"><Image src={Logo} alt="ProctorUTS Logo" width="146" height="48" /></a>
+            <Link href="/dashboard">
+              <a><Image src={Logo} alt="ProctorUTS Logo" width="146" height="48" /></a>
+            </Link>
           </div>
 
           <div className={classes.toolbarButtonContainer}>
