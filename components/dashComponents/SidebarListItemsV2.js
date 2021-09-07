@@ -4,6 +4,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import VideoLabelIcon from '@material-ui/icons/VideoLabel';
+import VideoLibraryIcon from '@material-ui/icons/VideoLibrary';
 import AssignmentTurnedInIcon from '@material-ui/icons/AssignmentTurnedIn';
 import BarChartIcon from '@material-ui/icons/BarChart';
 import LayersIcon from '@material-ui/icons/Layers';
@@ -13,8 +14,12 @@ import { makeStyles } from '@material-ui/core/styles';
 import Link from 'next/link';
 import { MenuItem } from '@material-ui/core';
 import Tooltip from '@material-ui/core/Tooltip';
+import Avatar from '@material-ui/core/Avatar';
+import Image from 'next/dist/client/image';
+import tempAvatar from '../../src/Images/Moyaicon.png';
+import clsx from 'clsx';
 
-const menuItems = [
+const stuMenuItems = [
     {
         name: "Dashboard",
         text: "Exam Hub",
@@ -69,6 +74,31 @@ const menuItems = [
 
 ]
 
+const invMenuItems = [
+    {
+        name: "Dashboard",
+        text: "Exam Hub",
+        link: "/dashboard",
+        icon: <DashboardIcon />,
+        divider: false,
+    },
+    {
+        name: "PastExams",
+        text: "Exam Recordings",
+        link: "/dashboard",
+        icon: <VideoLibraryIcon />,
+        divider: false,
+    },
+    {
+        name: "Messages",
+        text: "Messages",
+        link: "/dashboard",
+        icon: <MessageIcon />,
+        divider: false,
+    }
+
+]
+
 const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
@@ -94,18 +124,63 @@ const useStyles = makeStyles((theme) => ({
         height: "100%",
         width: "4px",
         backgroundColor: "#F9F9F9",
-    }
+    },
+    avatar: {
+        margin: 17,
+        transition: 'height 0.4s, width 0.4s, margin-Left 0.4s',
+    },
+    bigAvatar: {
+        margin: 10,
+        width: 150,
+        height: 150,
+        marginLeft: 40,
+    },
 }));
 
 export default function MainItemsList(props) {
     const classes = useStyles();
     const currentItem = props.currentItem;
     const isOpen = props.open;
+    const user = props.user; 
+    if (!props.isStudent) {
+        return (
+            <>
+                {invMenuItems.map((menuItem) => {
+                    const isActive = currentItem === menuItem.link;
+                    return (
+                        <React.Fragment key={menuItem.link}>
+                            <Link href={menuItem.link}>
+                                {!isOpen ?
+                                    <Tooltip title={menuItem.name} placement="right">
+                                        <ListItem button className={isActive ? classes.currentItem : ""}>
+                                            <ListItemIcon className={isActive ? classes.currentItemIcon : classes.itemIcon}>{menuItem.icon}</ListItemIcon>
+                                            <ListItemText primary={menuItem.text} style={isActive ? { color: "#4259d4" } : {}}></ListItemText>
+                                        </ListItem>
+                                    </Tooltip> :
+                                    <ListItem button className={isActive ? classes.currentItem : ""}>
+                                        <ListItemIcon className={isActive ? classes.currentItemIcon : classes.itemIcon}>{menuItem.icon}</ListItemIcon>
+                                        <ListItemText primary={menuItem.text} style={isActive ? { color: "#4259d4" } : {}}></ListItemText>
+                                    </ListItem>
+                                }
+
+                            </Link>
+                        </React.Fragment>
+                    );
+
+                })
+
+                }
+            </>
+        )
+    }
     return (
         <>
-            {menuItems.map((menuItem) => {
+       
+       <Avatar className={`${classes.avatar}${isOpen ? ` ${classes.bigAvatar}` : ``}`} ><Image src={tempAvatar} /></Avatar>
+            {stuMenuItems.map((menuItem) => {
                 const isActive = currentItem === menuItem.link;
                 return (
+                    
                     <React.Fragment key={menuItem.link}>
                         <Link href={menuItem.link}>
                             {!isOpen ?
