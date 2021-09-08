@@ -22,6 +22,8 @@ import Image from 'next/image';
 import styles from '../../styles/Home.module.css';
 import { ArrowLeft } from '@material-ui/icons';
 import { useRouter } from 'next/router';
+import tempAvatar from '../../src/Images/Moyaicon.png';
+
 
 
 
@@ -75,10 +77,7 @@ const useStyles = makeStyles((theme) => ({
   },
   drawerPaperClose: {
     overflowX: 'hidden',
-    transition: theme.transitions.create('width', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
+
     width: theme.spacing(9),
     [theme.breakpoints.up('sm')]: {
       width: theme.spacing(9),
@@ -113,7 +112,16 @@ const useStyles = makeStyles((theme) => ({
 // The bottom section will contain all the code and logic needed
 // to make the sidebar function properly
 
+
+//placeholder userobject. This will be changed as a prop which is passed in.
+const user = {
+  icon: "../../src/Images/Moyaicon.png",
+  name: 'moai'
+}
+
+
 export default function Dashboard(props) {
+  const isStudent = true; // this will change based on the request sent in via props. This is set to false right now for testing. 
   const classes = useStyles();
   const router = useRouter(); 
   const [open, setOpen] = React.useState(false);
@@ -175,7 +183,7 @@ export default function Dashboard(props) {
         {/* I'm pulling the actual icons with there respective links from the SidebarListItems file */}
         <List className={classes.drawerItems}>
           <div>
-            <MainItemsList currentItem={router.pathname} open={open}/>
+            <MainItemsList currentItem={router.pathname} open={open} isStudent={isStudent} user={user}/>
           </div>
           <Divider />
         </List>
