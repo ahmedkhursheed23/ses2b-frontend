@@ -149,7 +149,7 @@ export default function Dashboard(props) {
           </IconButton></div>
           <div className={styles.title} >
             <Link href="/dashboard">
-              <a><Image src={Logo} alt="ProctorUTS Logo" width="146" height="48" /></a>
+              <Image src={Logo} alt="ProctorUTS Logo" width="146" height="48" />
             </Link>
           </div>
 
