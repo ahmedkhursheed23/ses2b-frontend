@@ -20,30 +20,30 @@ export default function Home() {
       </Head>
       <Navbar></Navbar>
       <div className={styles.header}>
-      
+
         <main className={styles.main}>
-           <Grid container className={styles.Grid}>
-              <Grid item xs={12} md={6}> 
+          <Grid container className={styles.Grid}>
+            <Grid item xs={12} md={6}>
               <div className={styles.mainText}>
-                <h1>Anti-Cheating AI <br/>for <span>students</span><br/>taking online exams.</h1>
+                <h1>Anti-Cheating AI <br />for <span>students</span><br />taking online exams.</h1>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
                 <div className={styles.buttonN}>
-                  <Button variant="contained"  color="primary" className={styles.buttonN} onClick={() => { open("/login") }}>
+                  <Button variant="contained" color="primary" className={styles.buttonN} onClick={() => { open("/login") }}>
                     Login
                   </Button>
                 </div>
               </div>
-              </Grid>
-              
-              <Grid item xs={12} md={6}> 
-                <div className={styles.landin}>
+            </Grid>
+
+            <Grid item xs={12} md={6}>
+              <div className={styles.landin}>
                 <Image src={Landin} />
-                </div>
-              </Grid>
+              </div>
+            </Grid>
 
-           </Grid>
+          </Grid>
 
-{/*            <Grid container className={styles.Grid}>
+          {/*            <Grid container className={styles.Grid}>
             <Grid item xs={12} md={4}>
               <div>
                 <CheckCircleIcon fontSize="large" style={{ color:green[500]}}></CheckCircleIcon>
@@ -60,16 +60,16 @@ export default function Home() {
             </Grid>
              
            </Grid>   */}
-           
 
-           {/*    <div className={styles.logo} >
+
+          {/*    <div className={styles.logo} >
                 <Image  src={Logo} alt="ProctorUTS Logo" />
               </div> */}
-{/* 
+          {/* 
               <p className={styles.description}>
                 An Anti-Cheating Online Exam System with Privacy Protection 
               </p> */}
-           {/*  <div className={styles.grid}>
+          {/*  <div className={styles.grid}>
               <Link href="/login" className={styles.card}>
                 <div className={styles.card}>
                   <h2>Login &rarr;</h2>
@@ -77,7 +77,7 @@ export default function Home() {
                 </div>
               </Link> */}
 
-            {/*   <Link href="https://www.uts.edu.au/current-students/managing-your-course/classes-and-assessment/exams/online-exams"  className={styles.card}>
+          {/*   <Link href="https://www.uts.edu.au/current-students/managing-your-course/classes-and-assessment/exams/online-exams"  className={styles.card}>
                 
                 <div className={styles.card}>
                   <h2>About &rarr;</h2>
@@ -85,7 +85,7 @@ export default function Home() {
                 </div>
               </Link>
  */}
-        {/*       <Link
+          {/*       <Link
                 href="/contact"
                 className={styles.card}
               >
@@ -95,7 +95,7 @@ export default function Home() {
                 </div>
               </Link> */}
 
-        {/*       <Link
+          {/*       <Link
                 href="/helpandfaq"
                 className={styles.card}
               >
@@ -108,8 +108,8 @@ export default function Home() {
               </Link>
             </div>  */}
 
-            
-          </main>
+
+        </main>
       </div>
       <Footer></Footer>
     </div>

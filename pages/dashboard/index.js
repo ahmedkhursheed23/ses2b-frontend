@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
         overflow: 'auto',
         flexDirection: 'column',
         height: 150,
-      },
+    },
     fixedHeight: {
         height: 100,
     },
@@ -28,43 +28,42 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 export default function Test(props) {
-  const classes = useStyles();
-  const [showCurrent, setCurrent] = React.useState(false);
+    const classes = useStyles();
+    const [showCurrent, setCurrent] = React.useState(false);
 
-  const handleAgree = () => {
-    setCurrent(true);
-    console.log("Index side working");
-  }
-    
+    const handleAgree = () => {
+        setCurrent(true);
+        console.log("Index side working");
+    }
+    // Conditionally rendering current exams to only appear if a student has exams
     return (
         <div>
             <SidebarV2>
-                    { showCurrent === true ? 
-                        <div style={{paddingBottom: 60}}>
-                            <Typography variant="h5" style={{paddingBottom: 20}}>
-                                Current Exams
-                            </Typography>
-                            <ExamsCurrent />
-                        </div>
-                        
-                    : 
-                    <Typography color="secondary" variant="body1" style={{paddingBottom: 20}}>
+                {showCurrent === true ?
+                    <div style={{ paddingBottom: 60 }}>
+                        <Typography variant="h5" style={{ paddingBottom: 20 }}>
+                            Current Exams
+                        </Typography>
+                        <ExamsCurrent />
+                    </div>
+                    :
+                    <Typography color="secondary" variant="body1" style={{ paddingBottom: 20 }}>
                         You have no current exams
                     </Typography>
-                    }
-                    <Typography variant="h5" style={{paddingBottom: 20}}>
-                        Upcoming Exams
-                    </Typography>
-                    <ExamsTable handleAgree = {handleAgree} test1="test"/>
+                }
+                <Typography variant="h5" style={{ paddingBottom: 20 }}>
+                    Upcoming Exams
+                </Typography>
+                <ExamsTable handleAgree={handleAgree} test1="test" />
 
-                    {/* <Typography style={{paddingTop: 20, paddingBottom: 20}}>
+                {/* <Typography style={{paddingTop: 20, paddingBottom: 20}}>
                         You're probs wondering why there's two different versions of this, it's because I can implement this as a table or as a grid. Let me know which design looks best and ill go forward with it.
                     </Typography>
                     <Typography variant="h5">
                         Upcoming Exams
                     </Typography>
                     <ExamsTableV2/> */}
-                    {/* <Grid container spacing={3}>
+                {/* <Grid container spacing={3}>
                         <Grid item xs={12}>
                         <Paper className={classes.paper}>
                             <Typography>

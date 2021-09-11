@@ -5,10 +5,12 @@ import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import { HourglassEmpty } from '@material-ui/icons';
 
 // This whole doc needs to be cleaned up so dont worry that its not annotated
 // Im just testing the stepper functionality
-// This will be cleaned up when I got things working the way it should
+// This will be cleaned up when I have things working the way it should
+// This stepper container allows an easy transistion between different steps of setting up equipment
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -48,7 +50,9 @@ export default function HorizontalLabelPositionBelowStepper(props) {
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
   const steps = getSteps();
-
+  // the handle functions used here are huge
+  // a better method would be to toggle classes to switch between different styles
+  // these buttons change properties and styling of sibling components such as Face.js
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
     

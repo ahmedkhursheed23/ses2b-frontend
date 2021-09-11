@@ -1,10 +1,10 @@
-import React, { useRef} from 'react'
+import React, { useRef } from 'react'
 import SidebarV2 from '../../components/dashComponents/SidebarV2'
 import { Typography } from '@material-ui/core'
 import FaceStream from '../../components/FaceAPI/FaceStream'
 import ScreenShare from '../../components/WebRTC/ScreenShare'
 import Button from '@material-ui/core/Button'
-import Stepper from'../../components/dashComponents/testEquipment/Stepper'
+import Stepper from '../../components/dashComponents/testEquipment/Stepper'
 import Paper from '@material-ui/core/Paper'
 import Hidden from '@material-ui/core/Hidden';
 import { Container } from '@material-ui/core'
@@ -23,46 +23,49 @@ export default function TestEquipment() {
     const handleCloseVideo = () => myref.current.getClose();
     const handleStartVideo = () => myref.current.getStart();
 
-
+    //Honestly, this is super messy
+    //Most of these hooks are just me testing out calling functions between diff components
+    //the myref.current callbacks in particular are a method to call functions in child component from parent
+    
     return (
         <div>
             <SidebarV2>
                 <Typography variant="h5">
                     Test Equipment
                 </Typography>
-                {showFace 
-                    ? 
-                    <Stepper 
-                    setVideoWidth={setVideoWidth}
-                    setVideoHeight={setVideoHeight}
-                    setScreenWidth={setScreenWidth}
-                    setScreenHeight={setScreenHeight}
-                    setDisplay={setDisplay} 
-                    setFlex={setFlex} 
-                    setActiveStep={setActiveStep}
-                    handleVideoClose={handleCloseVideo}
-                    handleStartVideo={handleStartVideo}
+                {showFace
+                    ?
+                    <Stepper
+                        setVideoWidth={setVideoWidth}
+                        setVideoHeight={setVideoHeight}
+                        setScreenWidth={setScreenWidth}
+                        setScreenHeight={setScreenHeight}
+                        setDisplay={setDisplay}
+                        setFlex={setFlex}
+                        setActiveStep={setActiveStep}
+                        handleVideoClose={handleCloseVideo}
+                        handleStartVideo={handleStartVideo}
                     >
-                        <div style={{display: 'flex', justifyContent: newFlex, alignItems: 'center', height: 470}}>
-                            <Paper style={{padding: 5, display: displayType}} variant="outlined" square display="none">
-                                <FaceStream 
-                                videoWidth={videoWidth} 
-                                videoHeight={videoHeight}
-                                ref={myref}/>
+                        <div style={{ display: 'flex', justifyContent: newFlex, alignItems: 'center', height: 470 }}>
+                            <Paper style={{ padding: 5, display: displayType }} variant="outlined" square display="none">
+                                <FaceStream
+                                    videoWidth={videoWidth}
+                                    videoHeight={videoHeight}
+                                    ref={myref} />
                             </Paper>
                             {activeStep > 0 && activeStep < 3 ?
                                 <Paper variant="outlined" square
-                                style={{height: screenHeight, width: screenWidth, display: 'flex', justifyContent: 'center', alignItems: 'center'}}> 
+                                    style={{ height: screenHeight, width: screenWidth, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                                     <ScreenShare />
                                 </Paper>
-                            : activeStep > 2 && 
+                                : activeStep > 2 &&
                                 <div>
-                                    <img style={{maxWidth: 400}}src={"https://live-production.wcms.abc-cdn.net.au/634f185fc1cb3cb6565d9a84ecb0cae2?impolicy=wcms_crop_resize&cropH=694&cropW=1239&xPos=145&yPos=60&width=862&height=485"}/>
+                                    <img style={{ maxWidth: 400 }} src={"https://live-production.wcms.abc-cdn.net.au/634f185fc1cb3cb6565d9a84ecb0cae2?impolicy=wcms_crop_resize&cropH=694&cropW=1239&xPos=145&yPos=60&width=862&height=485"} />
                                 </div>
                             }
                         </div>
                     </Stepper>
-                    : <Button color="secondary" onClick={() => {setFace(true)}}> Begin Calibration</Button>
+                    : <Button color="secondary" onClick={() => { setFace(true) }}> Begin Calibration</Button>
                 }
             </SidebarV2>
         </div>
