@@ -5,7 +5,6 @@ import Grid from '@material-ui/core/Grid';
 import { makeStyles, Typography } from '@material-ui/core';
 import Paper from '@material-ui/core/Paper';
 import ExamsTable from '../../components/dashComponents/upcomingExams/ExamsTable';
-import ExamsTableV2 from '../../components/dashComponents/upcomingExams/ExamsTableV2';
 import ExamsCurrent from '../../components/dashComponents/upcomingExams/ExamsCurrent';
 
 
