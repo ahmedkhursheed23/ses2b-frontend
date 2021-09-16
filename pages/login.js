@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -14,19 +14,9 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Logo from '../src/Images/Logo.png'
 import Image from 'next/image'
+import { useRouter } from 'next/router'
+import axios from 'axios'
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -69,7 +59,35 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignInSide() {
   const classes = useStyles();
+  const router = useRouter();
 
+  const [loginUsername, setLoginUsername] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
+  const [feedback, setFeedback] = useState("")
+
+  const logIn = () => {
+    axios({
+      method: "POST",
+      data: {
+        email: loginUsername,
+        password: loginPassword
+      },
+      withCredentials: true,
+      url: "https://protoruts-backend.herokuapp.com/auth/login"
+    }).then((res) => {
+      if (res.data)
+        router.push("/dashboard")
+      else if (!res.data)
+        setFeedback("Incorrect Email or Password")
+      else
+        setFeedback("Network Error")
+    })
+  }
+
+  function signIn() {
+    logIn();
+  }
+  
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
@@ -85,7 +103,7 @@ export default function SignInSide() {
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
-          <form className={classes.form} noValidate>
+          {/* <form className={classes.form} noValidate> */}
             <TextField
               variant="outlined"
               margin="normal"
@@ -96,6 +114,7 @@ export default function SignInSide() {
               name="email"
               autoComplete="email"
               autoFocus
+              onChange={ e => setLoginUsername(e.target.value)}
             />
             <TextField
               variant="outlined"
@@ -107,18 +126,22 @@ export default function SignInSide() {
               type="password"
               id="password"
               autoComplete="current-password"
+              onChange={ e => setLoginPassword(e.target.value)}
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
-            />
+          />
+          
+            <Typography>{ feedback }</Typography>
+
             <Button
               type="submit"
               fullWidth
               variant="contained"
               color="primary"
               className={classes.submit}
-              href="/dashboard"
+              onClick={() => { signIn() }}
             >
               Sign In
             </Button>
@@ -147,7 +170,7 @@ export default function SignInSide() {
             >
               Go Back
             </Button> */}
-          </form>
+          {/* </form> */}
         </div>
       </Grid>
     </Grid>
