@@ -58,7 +58,7 @@ function Row(props) {
         <TableCell align="right" >{row.date}</TableCell>
         <TableCell align="right">{row.time}</TableCell>
         <TableCell align="right" style={{width: 330}} size="small">
-          <Link href="/dashboard/examroom">
+          <Link href="/dashboard/testFaceAuth">
             <Button style={{color: "#4caf50"}} variant="outlined">
               Enter Exam Room
             </Button>
