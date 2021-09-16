@@ -3,7 +3,7 @@ import React from 'react'
 import SidebarV2 from '../../components/dashComponents/SidebarV2'
 import ScreenShareTest from '../../components/WebRTC/ScreenShareTest'
 
-export default function testScreenShare() {
+export default function TestScreenShare() {
   const [isScreenShare, setScreenShare] = React.useState(false);
   return (
     <div>
