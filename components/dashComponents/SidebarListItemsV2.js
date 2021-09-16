@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -12,12 +12,13 @@ import PersonIcon from '@material-ui/icons/Person';
 import MessageIcon from '@material-ui/icons/Message';
 import { makeStyles } from '@material-ui/core/styles';
 import Link from 'next/link';
-import { MenuItem } from '@material-ui/core';
+import { MenuItem, Typography } from '@material-ui/core';
 import Tooltip from '@material-ui/core/Tooltip';
 import Avatar from '@material-ui/core/Avatar';
 import Image from 'next/dist/client/image';
 import tempAvatar from '../../src/Images/Moyaicon.png';
 import clsx from 'clsx';
+import axios from 'axios';
 
 const stuMenuItems = [
     {
@@ -141,7 +142,24 @@ export default function MainItemsList(props) {
     const classes = useStyles();
     const currentItem = props.currentItem;
     const isOpen = props.open;
-    const user = props.user; 
+    const user = props.user;
+
+    const [userDB, setUser] = useState()
+
+    const getUser = () => {
+        axios({
+        method: "GET",
+        url: "https://protoruts-backend.herokuapp.com/auth/current-user",
+        }).then((res) => {
+            console.log(res)
+            setUser(res.data)
+        })
+    }
+
+    useEffect(() => {
+        getUser();
+    }, [])
+    
     if (!props.isStudent) {
         return (
             <>
@@ -176,7 +194,8 @@ export default function MainItemsList(props) {
     return (
         <>
        
-       <Avatar className={`${classes.avatar}${isOpen ? ` ${classes.bigAvatar}` : ``}`} ><Image src={tempAvatar} /></Avatar>
+            <Avatar className={`${classes.avatar}${isOpen ? ` ${classes.bigAvatar}` : ``}`} ><Image src={tempAvatar} /></Avatar>
+            {userDB ? <Typography variant="h5">  { userDB.first_name + " " + userDB.last } </Typography> : null}
             {stuMenuItems.map((menuItem) => {
                 const isActive = currentItem === menuItem.link;
                 return (
