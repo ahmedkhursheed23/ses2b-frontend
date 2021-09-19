@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -49,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
   },
   logo: {
     color: 'white',
-    width:'60%', /* you can use % */
+    width: '60%', /* you can use % */
     height: 'auto',
     display: 'block',
     marginleft: 'auto',
@@ -63,7 +64,7 @@ export default function SignInSide() {
 
   const [loginUsername, setLoginUsername] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
-  const [feedback, setFeedback] = useState("")
+  const [feedback, setFeedback] = useState("");
 
   const logIn = () => {
     axios({
@@ -75,8 +76,9 @@ export default function SignInSide() {
       withCredentials: true,
       url: "https://protoruts-backend.herokuapp.com/auth/login"
     }).then((res) => {
-      if (res.data)
+      if (res.data) {
         router.push("/dashboard")
+      }
       else if (!res.data)
         setFeedback("Incorrect Email or Password")
       else
@@ -84,10 +86,6 @@ export default function SignInSide() {
     })
   }
 
-  function signIn() {
-    logIn();
-  }
-  
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
@@ -95,7 +93,7 @@ export default function SignInSide() {
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
         <div className={classes.paper}>
           <div className={classes.logo}>
-            <Image  src={Logo} alt="ProctorUTS Logo" />
+            <Image src={Logo} alt="ProctorUTS Logo" />
           </div>
           <Avatar className={classes.avatar}>
             <LockIcon />
@@ -104,63 +102,63 @@ export default function SignInSide() {
             Sign in
           </Typography>
           {/* <form className={classes.form} noValidate> */}
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
-              autoFocus
-              onChange={ e => setLoginUsername(e.target.value)}
-            />
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-              onChange={ e => setLoginPassword(e.target.value)}
-            />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            id="email"
+            label="Email Address"
+            name="email"
+            autoComplete="email"
+            autoFocus
+            onChange={e => setLoginUsername(e.target.value)}
           />
-          
-            <Typography>{ feedback }</Typography>
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            name="password"
+            label="Password"
+            type="password"
+            id="password"
+            autoComplete="current-password"
+            onChange={e => setLoginPassword(e.target.value)}
+          />
+          <FormControlLabel
+            control={<Checkbox value="remember" color="primary" />}
+            label="Remember me"
+          />
 
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              className={classes.submit}
-              onClick={() => { signIn() }}
-            >
-              Sign In
-            </Button>
-            <Grid container>
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  Forgot password?
-                </Link>
-              </Grid>
-              <Grid item>
-                <Link href="/" variant="body2">
-                  {"Home"}
-                </Link>
-              </Grid>
+          <Typography>{feedback}</Typography>
+
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.submit}
+            onClick={ logIn }
+          >
+            Sign In
+          </Button>
+          <Grid container>
+            <Grid item xs>
+              <Link href="#" variant="body2">
+                Forgot password?
+              </Link>
             </Grid>
-            {/* <Box mt={5}>
+            <Grid item>
+              <Link href="/" variant="body2">
+                {"Home"}
+              </Link>
+            </Grid>
+          </Grid>
+          {/* <Box mt={5}>
               <Copyright />
             </Box> */}
-           {/* <Button
+          {/* <Button
               type="submit"
               fullWidth
               variant="text"

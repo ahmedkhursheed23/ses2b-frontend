@@ -1,4 +1,6 @@
 import React from 'react';
+import { useRecoilState, useRecoilValue } from 'recoil';
+import { sidebarOpenState } from '../States.js';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -14,7 +16,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import Button from '@material-ui/core/Button';
-import MainItemsList from './SidebarListItemsV2';
+import MainItemsList  from './SidebarListItemsV2';
 import List from '@material-ui/core/List';
 import Container from '@material-ui/core/Container';
 import Logo from '../../src/Images/Logo.png';
@@ -46,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
     ...theme.mixins.toolbar,
   },
   appBar: {
-
+    
     zIndex: theme.zIndex.drawer + 1,
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
@@ -82,7 +84,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('sm')]: {
       width: theme.spacing(9),
     },
-    color: "#806f6e",
+    color : "#806f6e",
   },
   appBarSpacer: theme.mixins.toolbar,
   content: {
@@ -100,7 +102,7 @@ const useStyles = makeStyles((theme) => ({
   toolbarButtonContainer: {
     marginLeft: 'auto'
   },
-  toolBarSecondaryItems: {
+  toolBarSecondaryItems:{
     marginBottom: 'auto'
   },
   drawerItems: {
@@ -113,18 +115,11 @@ const useStyles = makeStyles((theme) => ({
 // to make the sidebar function properly
 
 
-//placeholder userobject. This will be changed as a prop which is passed in.
-const user = {
-  icon: "../../src/Images/Moyaicon.png",
-  name: 'moai'
-}
-
-
 export default function Dashboard(props) {
   const isStudent = true; // this will change based on the request sent in via props. This is set to false right now for testing. 
   const classes = useStyles();
-  const router = useRouter();
-  const [open, setOpen] = React.useState(false);
+  const router = useRouter(); 
+  const [open, setOpen] = useRecoilState(sidebarOpenState);
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -133,7 +128,6 @@ export default function Dashboard(props) {
   };
 
   const page = "Dashboard";
-
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -184,7 +178,7 @@ export default function Dashboard(props) {
         {/* I'm pulling the actual icons with there respective links from the SidebarListItems file */}
         <List className={classes.drawerItems}>
           <div>
-            <MainItemsList currentItem={router.pathname} open={open} isStudent={isStudent} user={user} />
+            <MainItemsList currentItem={router.pathname} open={open} isStudent={isStudent}/>
           </div>
           <Divider />
         </List>

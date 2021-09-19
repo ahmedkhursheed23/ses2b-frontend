@@ -16,6 +16,9 @@ const theme = createTheme({
     background: {
       default: '#fafafa',
     },
+    darkerPrimary: {
+      
+    },
   },
 });
 
