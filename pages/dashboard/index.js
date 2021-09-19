@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useRecoilState, useRecoilValue } from 'recoil';
 import SidebarV2 from '../../components/dashComponents/SidebarV2'
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
@@ -6,6 +7,9 @@ import { makeStyles, Typography } from '@material-ui/core';
 import Paper from '@material-ui/core/Paper';
 import ExamsTable from '../../components/dashComponents/upcomingExams/ExamsTable';
 import ExamsCurrent from '../../components/dashComponents/upcomingExams/ExamsCurrent';
+import { currentUserState } from '../../components/States';
+import axios from 'axios';
+
 
 
 
@@ -29,6 +33,21 @@ const useStyles = makeStyles((theme) => ({
 export default function Test(props) {
     const classes = useStyles();
     const [showCurrent, setCurrent] = React.useState(false);
+    const [currentUser, setCurrentUser] = useRecoilState(currentUserState); 
+    const getUser = () => {
+        axios({
+          method: "GET",
+          url: "https://protoruts-backend.herokuapp.com/auth/current-user",
+        }).then((res) => {
+          console.log(res)
+          setCurrentUser(res.data)
+        })
+      }
+
+      useEffect(() => {
+        if(!currentUser)
+        getUser();
+      }, []);
 
     const handleAgree = () => {
         setCurrent(true);
@@ -54,37 +73,6 @@ export default function Test(props) {
                     Upcoming Exams
                 </Typography>
                 <ExamsTable handleAgree={handleAgree} test1="test" />
-
-                {/* <Typography style={{paddingTop: 20, paddingBottom: 20}}>
-                        You're probs wondering why there's two different versions of this, it's because I can implement this as a table or as a grid. Let me know which design looks best and ill go forward with it.
-                    </Typography>
-                    <Typography variant="h5">
-                        Upcoming Exams
-                    </Typography>
-                    <ExamsTableV2/> */}
-                {/* <Grid container spacing={3}>
-                        <Grid item xs={12}>
-                        <Paper className={classes.paper}>
-                            <Typography>
-                                Hello this is a table
-                            </Typography>
-                        </Paper>
-                        </Grid>
-                        <Grid item xs={12}>
-                        <Paper className={classes.paper}>
-                        </Paper>
-                        </Grid>
-                        <Grid item xs={12}>
-                        <Paper className={classes.paper}>
-                        </Paper>
-                        </Grid>
-                        <Grid item xs={12}>
-                        <Paper className={classes.paper}>
-                        </Paper>
-                        </Grid>
-                        
-                    </Grid> */}
-
             </SidebarV2>
         </div>
     )

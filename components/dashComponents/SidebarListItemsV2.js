@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { useRecoilState, useRecoilValue } from 'recoil';
+import { currentUserState, sidebarOpenState } from '../States.js';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -165,25 +167,12 @@ const useStyles = makeStyles((theme) => ({
 export default function MainItemsList(props) {
     const classes = useStyles();
     const currentItem = props.currentItem;
-    const isOpen = props.open;
-    const user = props.user;
+    const isOpen =  useRecoilValue(sidebarOpenState);
+    const currentUser = useRecoilValue(currentUserState);
     const isStudent = props.isStudent;
+    console.log(currentUser);
 
-    const [userDB, setUser] = useState()
 
-    const getUser = () => {
-        axios({
-            method: "GET",
-            url: "https://protoruts-backend.herokuapp.com/auth/current-user",
-        }).then((res) => {
-            console.log(res)
-            setUser(res.data)
-        })
-    }
-
-    useEffect(() => {
-        getUser();
-    }, [])
 
 
 
@@ -233,7 +222,7 @@ export default function MainItemsList(props) {
                 </Link>
             {!isOpen?  <div></div>:<div style={{ marginBottom: "25px" }}>
                 <Typography variant="h6" align="center" style={{fontSize:"1rem"}}>Your Dashboard</Typography>
-                {userDB ? <Typography variant="subtitle1" align="center" gutterBottom style={{ color: "#969696", size: '0%' }}>  {userDB.first_name + " " + userDB.last + '\n' + '\n'} </Typography> : null}</div>
+                {currentUser ? <Typography variant="subtitle1" align="center" gutterBottom style={{ color: "#969696", size: '0%' }}>  {currentUser.first_name + " " + currentUser.last + '\n' + '\n'} </Typography> : null}</div>
             }
             {stuMenuItems.map((menuItem) => {
                 const isActive = currentItem === menuItem.link;
