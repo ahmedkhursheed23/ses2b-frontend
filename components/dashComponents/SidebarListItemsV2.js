@@ -4,6 +4,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import VideoLabelIcon from '@material-ui/icons/VideoLabel';
+import LinkIcon from '@material-ui/icons/Link';
 import VideoLibraryIcon from '@material-ui/icons/VideoLibrary';
 import AssignmentTurnedInIcon from '@material-ui/icons/AssignmentTurnedIn';
 import BarChartIcon from '@material-ui/icons/BarChart';
@@ -19,6 +20,8 @@ import Image from 'next/dist/client/image';
 import tempAvatar from '../../src/Images/Moyaicon.png';
 import clsx from 'clsx';
 import axios from 'axios';
+import { Button } from '@material-ui/core';
+
 
 const stuMenuItems = [
     {
@@ -58,13 +61,6 @@ const stuMenuItems = [
         divider: false,
     },
     {
-        name: "Profile",
-        text: "My Profile",
-        link: "/dashboard/profile",
-        icon: <PersonIcon />,
-        divider: false,
-    },
-    {
         name: "Help",
         text: "Help",
         link: "/dashboard/help",
@@ -100,6 +96,7 @@ const invMenuItems = [
 
 ]
 
+
 const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
@@ -128,14 +125,41 @@ const useStyles = makeStyles((theme) => ({
     },
     avatar: {
         margin: 17,
+        backagroundColor: "#00000",
         transition: 'height 0.4s, width 0.4s, margin-Left 0.4s',
+
     },
     bigAvatar: {
         margin: 10,
         width: 150,
         height: 150,
         marginLeft: 40,
+        backagroundColor: "#00000",
     },
+    avatarHover:{  
+        opacity: '100%',
+        color:'#00000',
+
+        '&:hover':{
+            cursor: "pointer",
+            display: 'absolute',
+            color:'#00000',
+            '& $avatarImage':{
+                filter:'Brightness(0.5);',
+            },
+            '& $avatarLink':{
+                visibility:"visible",
+
+            }
+        }
+    },
+    avatarImage: {
+    },
+    avatarLink:{
+        marginLeft: 56,
+        marginTop: 55,
+        visibility:"hidden",
+    }
 }));
 
 export default function MainItemsList(props) {
@@ -143,13 +167,14 @@ export default function MainItemsList(props) {
     const currentItem = props.currentItem;
     const isOpen = props.open;
     const user = props.user;
+    const isStudent = props.isStudent;
 
     const [userDB, setUser] = useState()
 
     const getUser = () => {
         axios({
-        method: "GET",
-        url: "https://protoruts-backend.herokuapp.com/auth/current-user",
+            method: "GET",
+            url: "https://protoruts-backend.herokuapp.com/auth/current-user",
         }).then((res) => {
             console.log(res)
             setUser(res.data)
@@ -159,8 +184,10 @@ export default function MainItemsList(props) {
     useEffect(() => {
         getUser();
     }, [])
-    
-    if (!props.isStudent) {
+
+
+
+    if (!isStudent) {
         return (
             <>
                 {invMenuItems.map((menuItem) => {
@@ -193,13 +220,25 @@ export default function MainItemsList(props) {
     }
     return (
         <>
-       
-            <Avatar className={`${classes.avatar}${isOpen ? ` ${classes.bigAvatar}` : ``}`} ><Image src={tempAvatar} /></Avatar>
-            {userDB ? <Typography variant="h5">  { userDB.first_name + " " + userDB.last } </Typography> : null}
+            <Link href="../dashboard/profile">
+                <Avatar className={`${classes.avatar}${isOpen ? ` ${classes.bigAvatar}` : ``}`} >
+                    <Tooltip title="View profile" placement="right">
+                    <div className={classes.avatarHover}>
+                    <LinkIcon style={{position: "absolute", zIndex: "999999", height:"25%", width: "25%", pointerEvents:"none"}} className={classes.avatarLink}/>
+                    <Image className={classes.avatarImage} src={tempAvatar}></Image>
+                    </div>
+                    </Tooltip>
+                    </Avatar>
+                    
+                </Link>
+            {!isOpen?  <div></div>:<div style={{ marginBottom: "25px" }}>
+                <Typography variant="h6" align="center" style={{fontSize:"1rem"}}>Your Dashboard</Typography>
+                {userDB ? <Typography variant="subtitle1" align="center" gutterBottom style={{ color: "#969696", size: '0%' }}>  {userDB.first_name + " " + userDB.last + '\n' + '\n'} </Typography> : null}</div>
+            }
             {stuMenuItems.map((menuItem) => {
                 const isActive = currentItem === menuItem.link;
                 return (
-                    
+
                     <React.Fragment key={menuItem.link}>
                         <Link href={menuItem.link}>
                             {!isOpen ?
@@ -222,6 +261,7 @@ export default function MainItemsList(props) {
             })
 
             }
+
         </>
     )
 }
