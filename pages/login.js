@@ -83,8 +83,11 @@ export default function SignInSide() {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({token: res.data})
+        }).then((res) => {
+          router.push("/dashboard")
+        }).catch((error) => {
+          setFeedback("System Error")
         })
-        router.push("/dashboard")
       }
       else if (!res.data)
         setFeedback("Incorrect Email or Password")

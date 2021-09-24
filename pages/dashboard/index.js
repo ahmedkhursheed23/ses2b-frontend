@@ -35,7 +35,6 @@ export default function Test({ token }) {
     const classes = useStyles();
     const [showCurrent, setCurrent] = React.useState(false);
     const [currentUser, setCurrentUser] = useRecoilState(currentUserState);
-    const [getCookie, setCookie] = React.useState(false);
     const getUser = () => {
         axios({
             method: "POST",
@@ -51,9 +50,8 @@ export default function Test({ token }) {
       }
 
     useEffect(() => {
-        setCookie(cookies.get("access_token"))
         if(!currentUser)
-        getUser();
+            getUser();
       }, []);
 
     const handleAgree = () => {
