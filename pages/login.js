@@ -77,6 +77,13 @@ export default function SignInSide() {
       url: "https://protoruts-backend.herokuapp.com/auth/login"
     }).then((res) => {
       if (res.data) {
+        fetch("/api/login", {
+          method: "post",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({token: res.data})
+        })
         router.push("/dashboard")
       }
       else if (!res.data)
